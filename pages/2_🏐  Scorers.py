@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 import altair as alt
 from vega_datasets import data
 import matplotlib.colors as mcolors
+from PIL import Image
 
 
 # Configura el título de la página i favicon
@@ -54,6 +55,9 @@ plotfinal = graph.mark_bar() + graph.mark_text(align='left', dx=2)
 st.altair_chart(plotfinal, use_container_width=True)
 
 st.caption("🔎Fuente: Asobal")
+image = Image.open('asobal.jpg')
+new_image = image.resize((90, 45))
+st.image(new_image)
 expander = st.expander(" ➕ **LEGEND**")
 expander.write("**ToG** = Total Goles Marcados")
 expander.write("**ToS** = Total Lanzamientos Intentados")
