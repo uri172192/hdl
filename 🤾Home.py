@@ -5,19 +5,12 @@ from PIL import Image
 
 #-----------------------------------------------
 st.set_page_config(page_title="HDL", page_icon="favicon-32x32.png", layout="wide")
-col1, col2 = st.columns(2)
 
-with col1:
-    image = Image.open('HDL-blanc.png')
-    st.image(image)
-with col2:
-    imageasobal = Image.open('asobal.jpg')
-    new_imageasobal = imageasobal.resize((100, 50))
-    st.image(new_imageasobal)
-
+image = Image.open('HDL-blanc.png')
+st.image(image)
 
 st.subheader('📌Descripción HDL')
-st.write('📢**Handball Data Lab** se presenta como una aplicación destinada al desarrollo y democratización del análisis de datos en balonmano. La finalidad es ayudar a los usarios a **disfrutar, comprender y compartir los datos sobre el balonmano**.')
+st.write('📢**Handball Data Lab** se presenta como una aplicación destinada al desarrollo y democratización del análisis de datos en balonmano. La finalidad es ayudar a los usarios a **disfrutar, comprender y compartir los datos sobre el balonmano**. Actualmente, la App presenta varios datos de la Liga Profesional ASOBAL.')
     
 st.divider()
 st.subheader("📌Contenidos HDL")
