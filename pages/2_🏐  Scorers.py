@@ -8,7 +8,6 @@ from vega_datasets import data
 import matplotlib.colors as mcolors
 from PIL import Image
 
-
 # Configura el título de la página i favicon
 st.set_page_config(page_title="Scorers", page_icon="ball.png", layout="wide")
 st.title('🏐Scorers')
