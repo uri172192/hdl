@@ -12,7 +12,7 @@ with col1:
     st.image(image)
 with col2:
     imageasobal = Image.open('asobal.jpg')
-    new_imageasobal = imageasobal.resize((300, 200))
+    new_imageasobal = imageasobal.resize((100, 50))
     st.image(new_imageasobal)
 
 
