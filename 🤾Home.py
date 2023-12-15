@@ -11,7 +11,7 @@ with col1:
     image = Image.open('HDL-blanc.png')
     st.image(image) 
     imageasobal = Image.open('asobal.jpg')
-    new_imageasobal = image.resize((300, 200))
+    new_imageasobal = imageasobal.resize((300, 200))
     st.image(new_imageasobal)
 
 with col2:
