@@ -5,11 +5,17 @@ import plotly.express as px
 import plotly.graph_objects as go
 import altair as alt
 from vega_datasets import data
+from PIL import Image
 
 # Configura el título de la página i favicon
 st.set_page_config(page_title="Shooting Similarity", page_icon="detective.png", layout="wide")
 st.title('🕵️Similitud Jugadores')
 st.subheader('📌Descubre los jugadores más similares entre si respecto a su eficacia en el lanzamiento en la Liga Asobal.')
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
+    imageasobal = Image.open('apple-touch-icon.png')
+    st.image(imageasobal)
+
 #-------------------------------------
 df = pd.read_excel('DatasetJugadoresAsobal.xlsx')
 df1 = pd.read_excel("DatasetJugadoresAsobal2324.xlsx")
