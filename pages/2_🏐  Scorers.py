@@ -10,9 +10,16 @@ from PIL import Image
 
 # Configura el título de la página i favicon
 st.set_page_config(page_title="Scorers", page_icon="ball.png", layout="wide")
-st.title('🏐Scorers')
-st.header('🎯Goleadores Asobal')
-st.subheader('📌Consulta todos los goleadores según **equipo**:')
+
+col1, col2 = st.columns(2)
+with col1:
+    st.title('🏐Scorers')
+    st.header('🎯Goleadores Asobal')
+    st.subheader('📌Consulta todos los goleadores según **equipo**:')
+
+with col2:
+    imageasobal = Image.open('apple-touch-icon.png')
+    st.image(imageasobal)
 
 df = pd.read_excel("DatasetJugadoresAsobal.xlsx")
 df1 = pd.read_excel("DatasetJugadoresAsobal2324.xlsx")
