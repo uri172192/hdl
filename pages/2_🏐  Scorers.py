@@ -41,10 +41,31 @@ selected_equipo = st.selectbox('Escoge un equipo:', equipos_temporada)
 # Filtrar los datos nuevamente para mostrar solo el equipo seleccionado
 filtered_data11 = filtered_data1[filtered_data1['Equipo'] == selected_equipo]
 
-# Generar colores únicos para cada equipo (combina múltiples escalas de colores)
-team_colors1 = dict(zip(equipos_temporada[:8], mcolors.TABLEAU_COLORS.values()))
-team_colors2 = dict(zip(equipos_temporada[8:16], mcolors.XKCD_COLORS.values()))
-team_colors = {**team_colors1, **team_colors2}
+# Crear un diccionario de colores personalizados para cada equipo
+custom_team_colors = {
+    'Barça': 'darkred',
+    'Granollers': 'royalblue',
+    'Cuenca': 'sienna',
+    'Torrelavega': 'orange',
+    'Bidasoa': 'olive',
+    'Logroño': 'tomato',
+    'Ademar': 'lightcoral',
+    'Puente Genil': 'mediumspringgreen',
+    'Anaitasuna': 'forestgreen',
+    'Benidorm': 'cornflowerblue',
+    'Huesca': 'red',
+    'Sinfin': 'black',
+    'Valladolid': 'mediumblue',
+    'Cangas': 'navy',
+    'Puerto Sagunto': 'firebrick',
+    'Nava': 'bisque',
+    'Cisne': 'silver',
+    'Guadalajara': 'purple',
+    # Agrega más equipos y colores según sea necesario
+}
+
+# Asigna los colores personalizados a los equipos
+team_colors = {equipo: custom_team_colors.get(equipo, 'magenta') for equipo in equipos_temporada}
 
 # Crear el gráfico
 graph = alt.Chart(filtered_data11).encode(
@@ -87,20 +108,43 @@ selected_pos = st.selectbox('Escoge una posicion:', pos_temporada)
 # Filtrar los datos nuevamente para mostrar solo  seleccionado
 filtered_data22 = filtered_data2[filtered_data2['Posicion'] == selected_pos]
 
-# Generar colores únicos para cada equipo (combina múltiples escalas de colores)
-team_colors1 = dict(zip(equipos_temporada2[:8], mcolors.TABLEAU_COLORS.values()))
-team_colors2 = dict(zip(equipos_temporada2[8:16], mcolors.XKCD_COLORS.values()))
-team_colors = {**team_colors1, **team_colors2}
+# Crear un diccionario de colores personalizados para cada equipo
+custom_team_colors = {
+    'Barça': 'darkred',
+    'Granollers': 'royalblue',
+    'Cuenca': 'sienna',
+    'Torrelavega': 'orange',
+    'Bidasoa': 'olive',
+    'Logroño': 'tomato',
+    'Ademar': 'lightcoral',
+    'Puente Genil': 'mediumspringgreen',
+    'Anaitasuna': 'forestgreen',
+    'Benidorm': 'cornflowerblue',
+    'Huesca': 'red',
+    'Sinfin': 'black',
+    'Valladolid': 'mediumblue',
+    'Cangas': 'navy',
+    'Puerto Sagunto': 'firebrick',
+    'Nava': 'bisque',
+    'Cisne': 'silver',
+    'Guadalajara': 'purple',
+    # Agrega más equipos y colores según sea necesario
+}
 
-## Graph
+# Asigna los colores personalizados a los equipos
+team_colors = {equipo: custom_team_colors.get(equipo, 'magenta') for equipo in equipos_temporada2}
+
+# Crear el gráfico
 graph = alt.Chart(filtered_data22).encode(
     x='ToG',
     y=alt.Y("Jugador").sort('-x'),
     text='ToG',
-    tooltip=['Jugador', 'Posicion', 'Equipo', 'ToG', 'ToS', 'To%'],
+    tooltip=['Jugador', 'Posicion','Equipo', 'ToG', 'ToS', 'To%'],
     color=alt.Color("Equipo", scale=alt.Scale(domain=list(team_colors.keys()), range=list(team_colors.values())))
 )
 plotfinalpos = graph.mark_bar() + graph.mark_text(align='left', dx=2)
+
+# Mostrar el gráfico en Streamlit
 st.altair_chart(plotfinalpos, use_container_width=True)
 
 st.caption("🔎Fuente: Asobal")
