@@ -14,7 +14,7 @@ with col1:
 
 with col2:
  image = Image.open('apple-touch-icon.png')
- st.image(imagefinal)
+ st.image(image)
 
 ## Df Load
 df = pd.read_excel("DatasetJugadoresAsobal.xlsx")
