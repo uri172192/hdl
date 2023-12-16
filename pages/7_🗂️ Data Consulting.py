@@ -1,12 +1,21 @@
 import streamlit as st
 import pandas as pd
+from PIL import Image
 
 # Configura el título de la página i favicon
 st.set_page_config(page_title="Data Consulting", page_icon="folder.png", layout="wide")
-st.title("🗂️Data Consulting")
 
-st.subheader('📌Players Data')
-st.write('Consulta datos jugadores Asobal:')
+col1, col2 = st.columns(2)
+with col1:
+ st.title("🗂️Data Consulting")
+
+ st.subheader('📌Players Data')
+ st.write('Consulta datos jugadores Asobal:')
+
+with col2:
+ image = Image.open('apple-touch-icon.png')
+ st.image(imagefinal)
+
 ## Df Load
 df = pd.read_excel("DatasetJugadoresAsobal.xlsx")
 df1 = pd.read_excel("DatasetJugadoresAsobal2324.xlsx")
