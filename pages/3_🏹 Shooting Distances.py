@@ -8,12 +8,18 @@ from vega_datasets import data
 
 # Configura el título de la página i favicon
 st.set_page_config(page_title="Shooting Distances", page_icon="arrow.png", layout="wide")
-st.title('🏹Shooting Distances')
+
+col1, col2 = st.columns(2)
+with col1:
+    st.title('🏹Shooting Distances')
+    st.subheader("📌Consulta los datos sobre lanzamientos intentados, anotados y el porcentaje correspondiente a cada jugador, según la distancia del lanzamiento, filtrando por equipo.")
+
+with col2:
+    imageasobal = Image.open('apple-touch-icon.png')
+    st.image(imageasobal)
 
 df = pd.read_excel("DatasetJugadoresAsobal.xlsx")
 df1 = pd.read_excel("DatasetJugadoresAsobal2324.xlsx")
-
-st.subheader("📌Consulta los datos sobre lanzamientos intentados, anotados y el porcentaje correspondiente a cada jugador, según la distancia del lanzamiento, filtrando por equipo.")
 
 # Obtener una lista de temporadas únicas de ambos DataFrames
 temporadas = pd.concat([df1['Temporada'], df['Temporada']]).unique()
