@@ -11,13 +11,12 @@ from PIL import Image
 # Configura el título de la página i favicon
 st.set_page_config(page_title="Scorers", page_icon="ball.png", layout="wide")
 
-col1, col2 = st.columns(2)
-with col1:
-    st.title('🏐Scorers')
-    st.header('🎯Goleadores Asobal')
-    st.subheader('📌Consulta todos los goleadores según **equipo**:')
+st.title('🏐Scorers')
+st.header('🎯Goleadores Asobal')
+st.subheader('📌Consulta todos los goleadores según **equipo**:')
 
-with col2:
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
     imageasobal = Image.open('apple-touch-icon.png')
     st.image(imageasobal)
 
