@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
+from PIL import Image
 
 st.set_page_config(page_title="Players Shooting Performance", page_icon="punteria.png", layout="wide")
 
@@ -13,7 +14,12 @@ df1 = pd.read_excel("DatasetJugadoresAsobal2324.xlsx")
 st.title('🎯Players Shooting Performance')
 
 # Título de la sección
-st.header('📌Compara el rendimiento de los de jugadores de la Liga Asobal')
+st.subheader('📌Compara el rendimiento de los de jugadores de la Liga Asobal')
+
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
+    imageasobal = Image.open('apple-touch-icon.png')
+    st.image(imageasobal)
 
 # Obtener una lista de temporadas únicas de ambos DataFrames
 temporadas = pd.concat([df1['Temporada'], df['Temporada']]).unique()
