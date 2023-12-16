@@ -13,7 +13,7 @@ st.subheader('📌Descripción HDL')
 st.write('📢**Handball Data Lab** se presenta como una aplicación destinada al desarrollo y democratización del análisis de datos en balonmano. La finalidad es ayudar a los usarios a **disfrutar, comprender y compartir los datos sobre el balonmano**. Actualmente, la App presenta varios datos de la Liga Profesional ASOBAL.')
 
 imageasobal = Image.open('apple-touch-icon.png')
-st.image(imageasobal)
+st.image(imageasobal, caption=" ")
 
 st.divider()
 st.subheader("📌Contenidos HDL")
