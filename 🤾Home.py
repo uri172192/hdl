@@ -9,13 +9,13 @@ st.set_page_config(page_title="HDL", page_icon="favicon-32x32.png", layout="wide
 image = Image.open('HDL-blanc.png')
 st.image(image)
 
-col1, col2 = st.columns(2)
-with col1:
-  st.subheader('📌Descripción HDL')
-  st.write('📢**Handball Data Lab** se presenta como una aplicación destinada al desarrollo y democratización del análisis de datos en balonmano. La finalidad es ayudar a los usarios a **disfrutar, comprender y compartir los datos sobre el balonmano**. Actualmente, la App presenta varios datos de la Liga Profesional ASOBAL.')
-with col2:
-  imageasobal = Image.open('apple-touch-icon.png')
-  st.image(imageasobal)
+st.subheader('📌Descripción HDL')
+st.write('📢**Handball Data Lab** se presenta como una aplicación destinada al desarrollo y democratización del análisis de datos en balonmano. La finalidad es ayudar a los usarios a **disfrutar, comprender y compartir los datos sobre el balonmano**. Actualmente, la App presenta varios datos de la Liga Profesional ASOBAL.')
+
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
+    imageasobal = Image.open('apple-touch-icon.png')
+    st.image(imageasobal)
 
 st.divider()
 st.subheader("📌Contenidos HDL")
