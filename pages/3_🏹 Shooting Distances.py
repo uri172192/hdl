@@ -10,14 +10,13 @@ from PIL import Image
 # Configura el título de la página i favicon
 st.set_page_config(page_title="Shooting Distances", page_icon="arrow.png", layout="wide")
 
-col1, col2 = st.columns(2)
-with col1:
-    st.title('🏹Shooting Distances')
-with col2:
+st.title('🏹Shooting Distances')
+st.subheader("📌Consulta los datos sobre lanzamientos intentados, anotados y el porcentaje correspondiente a cada jugador, según la distancia del lanzamiento, filtrando por equipo.")
+
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
     imageasobal = Image.open('apple-touch-icon.png')
     st.image(imageasobal)
-
-st.subheader("📌Consulta los datos sobre lanzamientos intentados, anotados y el porcentaje correspondiente a cada jugador, según la distancia del lanzamiento, filtrando por equipo.")
 
 df = pd.read_excel("DatasetJugadoresAsobal.xlsx")
 df1 = pd.read_excel("DatasetJugadoresAsobal2324.xlsx")
