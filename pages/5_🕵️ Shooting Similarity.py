@@ -17,7 +17,7 @@ with cent_co:
     st.image(imageasobal)
 
 #-------------------------------------
-df = pd.read_excel('DatasetJugadoresAsobal.xlsx')
+df = pd.read_excel('DatasetJugadoresAsobal2223.xlsx')
 df1 = pd.read_excel("DatasetJugadoresAsobal2324.xlsx")
 #-------------------------------------
 #-------------------------------------
