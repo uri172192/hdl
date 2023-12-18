@@ -18,7 +18,7 @@ with cent_co:
     imageasobal = Image.open('apple-touch-icon.png')
     st.image(imageasobal)
 
-df = pd.read_excel("DatasetJugadoresAsobal.xlsx")
+df = pd.read_excel("DatasetJugadoresAsobal2223.xlsx")
 df1 = pd.read_excel("DatasetJugadoresAsobal2324.xlsx")
 
 # Obtener una lista de temporadas únicas de ambos DataFrames
