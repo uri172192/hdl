@@ -17,7 +17,7 @@ with col2:
  st.image(image)
 
 ## Df Load
-df = pd.read_excel("DatasetJugadoresAsobal.xlsx")
+df = pd.read_excel("DatasetJugadoresAsobal2223.xlsx")
 df1 = pd.read_excel("DatasetJugadoresAsobal2324.xlsx")
 
 # Obtener una lista de temporadas únicas de ambos DataFrames
