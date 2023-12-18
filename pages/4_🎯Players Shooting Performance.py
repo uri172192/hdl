@@ -6,7 +6,7 @@ from PIL import Image
 st.set_page_config(page_title="Players Shooting Performance", page_icon="punteria.png", layout="wide")
 
 # Cargar el DataFrame desde el archivo Excel
-df = pd.read_excel("DatasetJugadoresAsobal.xlsx")
+df = pd.read_excel("DatasetJugadoresAsobal2223.xlsx")
 df1 = pd.read_excel("DatasetJugadoresAsobal2324.xlsx")
 
 
