@@ -53,6 +53,7 @@ expander.write("**ToG** = Total Goles Marcados")
 expander.write("**ToS** = Total Lanzamientos Intentados")
 expander.write("**To%** = Porcentaje total de acierto en el lanzamiento")
 expander.write("**L6 (Lanzamientos de 6 metros), L9 (Lanzamientos de 9 metros), L7 (Penaltis), LCO (Lanzamientos de contraataque)** = Siguen el mismo proceso de goles, lanzamientos intentados y porcentaje de acierto según cada distancia o tipo de lanzamiento.")
+expander.write("**AST** = Total de Asistencias realizadas") 
 
 st.divider()
 
