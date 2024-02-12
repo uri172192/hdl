@@ -1414,7 +1414,7 @@ def gk1():
 
     plotfinalLCOPP = chart2.mark_bar(color='orange') + chart2.mark_text(align='left', dx=2)
 
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12 = st.tabs(["L6P","L6S", "L6%", "L9P", "L9S", "L9%", "L7P", "L7S", "L7%", "LCOP", "LCOS", "LCO%"])
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12 = st.tabs(["L6P","L6M", "L6%", "L9P", "L9M", "L9%", "L7P", "L7M", "L7%", "LCOP", "LCOS", "LCO%"])
     with tab1:
     # Use the Streamlit theme.
     # This is the default. So you can also omit the theme argument.
