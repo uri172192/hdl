@@ -61,7 +61,10 @@ with expander:
 
 
 # Mostrar el DataFrame completo + Search Bar:
-st.write('🗃️**EHF 23/24 Group Phase GK Data:**', df)
+# Redondear los valores a 2 decimales
+df_rounded = df.round(2)
+st.write('🗃️**EHF 23/24 Group Phase GK Data:**', df_rounded)
+
 
 image = Image.open('logohdl.png')
 
