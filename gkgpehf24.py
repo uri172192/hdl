@@ -5,12 +5,12 @@ from PIL import Image
 st.set_page_config(page_title="TEST GK", layout="wide")
 
 
-st.markdown("🤾🏿‍♂️<h1 style='text-align: center;'>Goalkeeper EHF Champions League Data -- Group Phase</h1>🤾🏻‍♂️", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Champions League Data -- Group Phase</h1>", unsafe_allow_html=True)
 
 df = pd.read_excel("dfgkgp.xlsx")
 
 # Crear el expander
-expander = st.expander("➕ **EHF GK TEAMS DATA CONSULTORY**")
+expander = st.expander("➕ **EHF GK TEAMS DATA CONSULTORY** 🥅🤾🏿‍♂️")
 
 # Dentro del expander, agregar el código para seleccionar un jugador
 with expander:
@@ -31,7 +31,7 @@ with expander:
         st.warning('Please, select an EHF team.')
 
 # Crear el expander
-expander = st.expander("➕ **EHF GK INDIVIDUAL DATA CONSULTORY**")
+expander = st.expander("➕ **EHF GK INDIVIDUAL DATA CONSULTORY** 🥅🤾🏻‍♂️")
 
 # Dentro del expander, agregar el código para seleccionar un jugador
 with expander:
