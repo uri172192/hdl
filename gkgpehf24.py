@@ -62,9 +62,9 @@ expander.write("**WSO** = Number of wing shots received")
 
 
 col1, col2 = st.columns(2)
-with col1
+with col1:
 image_ehf_logo = Image.open('ehflogo.png')
 st.image(image_ehf_logo)
-with col2
+with col2:
 hdl = Image.open('HDL.png')
 st.image(hdl)
