@@ -8,8 +8,11 @@ left_co, cent_co,last_co = st.columns(3)
 with left_co:
     image_ehf_logo = Image.open('ehflogo.png')
     st.image(image_ehf_logo)
-with last_co:
+with cent_co:
     st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Group Phase</h1>", unsafe_allow_html=True)
+with last_co:
+    image_ehf_logo = Image.open('ehflogo.png')
+    st.image(image_ehf_logo)
 
 df = pd.read_excel("dfgkgp.xlsx")
 
