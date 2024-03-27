@@ -5,6 +5,7 @@ from PIL import Image
 st.set_page_config(page_title="TEST GK", layout="wide")
 
 st.title("Goalkeeper EHF Champions League Data Group Phase")
+st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Champions League Data -- Group Phase</h1>", unsafe_allow_html=True)
 
 df = pd.read_excel("dfgkgp.xlsx")
 
@@ -59,12 +60,3 @@ expander.write("**NºMSA** = Number of Saves made by X distance")
 expander.write("**NºMSO** = Number of Shots received by X distance")
 expander.write("**WSA** = Number of saves made from wing shots")
 expander.write("**WSO** = Number of wing shots received")
-
-
-col1, col2 = st.columns(2)
-with col1:
-    image_ehf_logo = Image.open('ehflogo.png')
-    st.image(image_ehf_logo)
-with col2:
-    hdl = Image.open('HDL-blanc.png')
-    st.image(hdl)
