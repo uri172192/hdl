@@ -80,7 +80,7 @@ expander.write("**WSO** = Number of wing shots received")
 
 left_co, cent_co, right_co = st.columns(3)
 with left_co:
-    image = Image.open('favicon-32x32.png')
+    image = Image.open('fotohdl.png')
     st.image(image)
 with right_co:
     image1 = Image.open('ehflogo.png')
