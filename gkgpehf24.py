@@ -26,7 +26,12 @@ with expander:
     # Mostrar el DataFrame filtrado si se seleccionó un equipo
     if not equipo_df.empty:
         #st.write(f'GK Data EHF Team Selected: {gkteam}:')
-        st.write(equipo_df)
+        #st.write(equipo_df)
+        # Redondear los valores a 2 decimales
+        equipo_df_rounded = equipo_df.round(2)
+        
+        st.write(equipo_df_rounded)
+    
     else:
         st.warning('Please, select an EHF team.')
 
