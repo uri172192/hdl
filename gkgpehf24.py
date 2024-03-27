@@ -8,7 +8,7 @@ st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Group Phase</h1>", u
 df = pd.read_excel("dfgkgp.xlsx")
 
 # Crear el expander
-expander = st.expander("➕ **EHF GK TEAMS CONSULTORY**")
+expander = st.expander("➕ **EHF GK TEAMS DATA CONSULTORY**")
 
 # Dentro del expander, agregar el código para seleccionar un jugador
 with expander:
@@ -23,13 +23,13 @@ with expander:
 
     # Mostrar el DataFrame filtrado si se seleccionó un equipo
     if not equipo_df.empty:
-        st.write(f'GK Data EHF Team: {gkteam}')
+        #st.write(f'GK Data EHF Team Selected: {gkteam}:')
         st.write(equipo_df)
     else:
         st.warning('Please, select an EHF team.')
 
 # Crear el expander
-expander = st.expander("➕ **EHF GK INDIVIDUAL CONSULTORY**")
+expander = st.expander("➕ **EHF GK INDIVIDUAL DATA CONSULTORY**")
 
 # Dentro del expander, agregar el código para seleccionar un jugador
 with expander:
@@ -40,7 +40,7 @@ with expander:
     gk_selected = df[df['Name'] == gk]
 
     if not gk_selected.empty:
-        st.write(f'GK Data EHF Team {gk}:')
+        #st.write(f'GK Data EHF Team {gk}:')
         st.write(gk_selected)
     else:
         st.warning('Please, write a GK Name.')
