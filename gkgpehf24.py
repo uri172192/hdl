@@ -26,7 +26,9 @@ with expander:
     # Mostrar el DataFrame filtrado si se seleccionó un equipo
     if not equipo_df.empty:
         #st.write(f'GK Data EHF Team Selected: {gkteam}:')
-        st.write(equipo_df)
+        rounded_df1 = st.write(equipo_df)
+        # Redondear los valores del DataFrame seleccionado y mostrarlo en Streamlit
+        st.write("", rounded_df1)
     else:
         st.warning('Please, select an EHF team.')
 
@@ -43,7 +45,9 @@ with expander:
 
     if not gk_selected.empty:
         #st.write(f'GK Data EHF Team {gk}:')
-        st.write(gk_selected)
+        roundad_df2 = st.write(gk_selected)
+        # Redondear los valores del DataFrame seleccionado y mostrarlo en Streamlit
+        st.write("", rounded_df2)
     else:
         st.warning('Please, write a GK Name.')
 
