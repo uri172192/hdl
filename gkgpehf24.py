@@ -60,3 +60,6 @@ expander.write("**NºMSA** = Number of Saves made by X distance")
 expander.write("**NºMSO** = Number of Shots received by X distance")
 expander.write("**WSA** = Number of saves made from wing shots")
 expander.write("**WSO** = Number of wing shots received")
+
+image = Image.open('logohdl.png')
+    st.image(image)
