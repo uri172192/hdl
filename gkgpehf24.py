@@ -5,7 +5,7 @@ from PIL import Image
 st.set_page_config(page_title="TEST GK", layout="wide")
 
 
-st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Champions League Data -- Group Phase</h1>", unsafe_allow_html=True)
+st.markdown("🤾🏿‍♂️<h1 style='text-align: center;'>Goalkeeper EHF Champions League Data -- Group Phase</h1>🤾🏻‍♂️", unsafe_allow_html=True)
 
 df = pd.read_excel("dfgkgp.xlsx")
 
