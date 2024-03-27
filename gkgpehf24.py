@@ -5,8 +5,9 @@ from PIL import Image
 st.set_page_config(page_title="GK EHF DATA", page_icon="favicon-32x32.png", layout="wide")
 
 
-st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Champions League Data -- Group Phase</h1>", unsafe_allow_html=True)
-st.title("🥅 Goalkeeper EHF Champions League Data - Group Phase 🤾🏿‍♂️")
+#st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Champions League Data -- Group Phase</h1>", unsafe_allow_html=True)
+st.title("🥅 Goalkeeper EHF Champions League Data 🤾🏿‍♂️")
+st.subheader("Group Phase 23/24")
 
 df = pd.read_excel("dfgkgp.xlsx")
 
