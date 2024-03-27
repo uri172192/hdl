@@ -4,15 +4,7 @@ from PIL import Image
 
 st.set_page_config(page_title="TEST GK", layout="wide")
 
-left_co, cent_co,last_co = st.columns(3)
-with left_co:
-    image_ehf_logo = Image.open('ehflogo.png')
-    st.image(image_ehf_logo)
-with cent_co:
-    st.title("Goalkeeper EHF Champions League Data Group Phase")
-with last_co:
-    image_ehf_logo = Image.open('ehflogo.png')
-    st.image(image_ehf_logo)
+st.title("Goalkeeper EHF Champions League Data Group Phase")
 
 df = pd.read_excel("dfgkgp.xlsx")
 
@@ -67,3 +59,12 @@ expander.write("**NºMSA** = Number of Saves made by X distance")
 expander.write("**NºMSO** = Number of Shots received by X distance")
 expander.write("**WSA** = Number of saves made from wing shots")
 expander.write("**WSO** = Number of wing shots received")
+
+
+col1, col2 = st.columns(2)
+with col1
+image_ehf_logo = Image.open('ehflogo.png')
+st.image(image_ehf_logo)
+with col2
+hdl = Image.open('HDL.png')
+st.image(hdl)
