@@ -6,12 +6,12 @@ st.set_page_config(page_title="GK EHF DATA", page_icon="favicon-32x32.png", layo
 
 
 st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Champions League Data -- Group Phase</h1>", unsafe_allow_html=True)
-st.title("🤾🏿‍♂️ Goalkeeper EHF Champions League Data -- Group Phase 🤾🏿‍♂️")
+st.title("🥅 Goalkeeper EHF Champions League Data - Group Phase 🤾🏿‍♂️")
 
 df = pd.read_excel("dfgkgp.xlsx")
 
 # Crear el expander
-expander = st.expander("➕ **EHF GK TEAMS DATA CONSULTORY** 🥅🤾🏿‍♂️")
+expander = st.expander("➕ **EHF GK TEAMS DATA CONSULTORY** 🥅🤾🏿‍♂")
 
 # Dentro del expander, agregar el código para seleccionar un jugador
 with expander:
