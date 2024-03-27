@@ -16,14 +16,14 @@ with expander:
                         (df['Team']),
                         index=None,
                         placeholder="Select EHF team...")
-    st.write('EHF Team selected:', gkteam)
+    #st.write('EHF Team selected:', gkteam)
 
     # Filtrar el DataFrame según el equipo seleccionado
     equipo_df = df[df['Team'] == gkteam]
 
     # Mostrar el DataFrame filtrado si se seleccionó un equipo
     if not equipo_df.empty:
-        st.write(f'GK Data EHF Team {gkteam}:')
+        st.write(f'GK Data EHF Team: {gkteam}')
         st.write(equipo_df)
     else:
         st.warning('Please, select an EHF team.')
