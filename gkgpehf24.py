@@ -9,7 +9,7 @@ with left_co:
     image_ehf_logo = Image.open('ehflogo.png')
     st.image(image_ehf_logo)
 with cent_co:
-    st.title("Goalkeeper EHF Group Phase")
+    st.title("Goalkeeper EHF Champions League Data Group Phase")
 with last_co:
     image_ehf_logo = Image.open('ehflogo.png')
     st.image(image_ehf_logo)
