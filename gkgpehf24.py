@@ -78,9 +78,9 @@ expander.write("**NºMSO** = Number of Shots received by X distance")
 expander.write("**WSA** = Number of saves made from wing shots")
 expander.write("**WSO** = Number of wing shots received")
 
-#left_co, cent_co, right_co = st.columns(3)
+left_co, cent_co, right_co = st.columns(3)
 with left_co:
-image = Image.open('logohdl.png')
+    image = Image.open('logohdl.png')
     st.image(image)
 #with right_co:
     #image1 = Image.open('ehflogo.png')
