@@ -49,7 +49,7 @@ with expander:
 
 
 # Mostrar el DataFrame completo + Search Bar:
-st.write('**EHF 23/24 Group Phase GK Data:**', df)
+st.write('🗃️**EHF 23/24 Group Phase GK Data:**', df)
 
 
 
