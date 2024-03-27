@@ -33,7 +33,10 @@ expander = st.expander("➕ **EHF GK INDIVIDUAL CONSULTORY**")
 
 # Dentro del expander, agregar el código para seleccionar un jugador
 with expander:
-    gk = st.selectbox('Select EHF GK:', (df['Name']), index=None, placeholder='Type GK Name...')
+    gk = st.selectbox('Select EHF GK:', 
+                      (df['Name']), 
+                      index=None, 
+                      placeholder='Type GK name...')
     gk_selected = df[df['Name'] == gk]
 
     if not gk_selected.empty:
