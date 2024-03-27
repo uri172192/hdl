@@ -47,7 +47,7 @@ with expander:
 
 
 # Mostrar el DataFrame completo + Search Bar:
-st.write('GK EHF 23/24 Group Phase:', df)
+st.write('**EHF 23/24 Group Phase GK Data:**', df)
 
 
 st.caption("🔎Source: EHF")
