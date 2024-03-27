@@ -62,4 +62,4 @@ expander.write("**WSA** = Number of saves made from wing shots")
 expander.write("**WSO** = Number of wing shots received")
 
 image = Image.open('logohdl.png')
-    st.image(image)
+st.image(image)
