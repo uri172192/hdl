@@ -51,7 +51,7 @@ with expander:
 # Mostrar el DataFrame completo + Search Bar:
 st.write('🗃️**EHF 23/24 Group Phase GK Data:**', df)
 
-
+image = Image.open('logohdl.png')
 
 st.caption("🔎Source: EHF")
 expander = st.expander(" ➕ **LEGEND**")
@@ -60,6 +60,9 @@ expander.write("**NºMSA** = Number of Saves made by X distance")
 expander.write("**NºMSO** = Number of Shots received by X distance")
 expander.write("**WSA** = Number of saves made from wing shots")
 expander.write("**WSO** = Number of wing shots received")
+exapander.image(image)
+
+
 
 left_co, cent_co,last_co = st.columns(3)
 with cent_co:
