@@ -5,7 +5,7 @@ from PIL import Image
 st.set_page_config(page_title="TEST GK", layout="wide")
 
 left_co, cent_co,last_co = st.columns(3)
-with lef_co:
+with left_co:
     image_ehf_logo = Image.open('ehflogo.png')
     st.image(image_ehf_logo)
 with last_co:
