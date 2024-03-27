@@ -11,9 +11,9 @@ df = pd.read_excel("dfgkgp.xlsx")
 expander = st.expander("➕ **EHF GK TEAMS DATA CONSULTORY**")
 
 left_co, cent_co,last_co = st.columns(3)
-   with cent_co:
-       image_ehf_logo = Image.open('ehfcllogo.png')
-       st.image(image_ehf_logo)
+with cent_co:
+   image_ehf_logo = Image.open('ehfcllogo.png')
+   st.image(image_ehf_logo)
 
 # Dentro del expander, agregar el código para seleccionar un jugador
 with expander:
