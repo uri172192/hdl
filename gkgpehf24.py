@@ -9,7 +9,7 @@ with left_co:
     image_ehf_logo = Image.open('ehflogo.png')
     st.image(image_ehf_logo)
 with cent_co:
-    st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Group Phase</h1>", unsafe_allow_html=True)
+    st.title("Goalkeeper EHF Group Phase")
 with last_co:
     image_ehf_logo = Image.open('ehflogo.png')
     st.image(image_ehf_logo)
