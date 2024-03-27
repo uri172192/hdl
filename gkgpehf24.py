@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 
-st.set_page_config(page_title="TEST GK", layout="wide")
+st.set_page_config(page_title="GK EHF DATA", layout="wide")
 
 
 st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Champions League Data -- Group Phase</h1>", unsafe_allow_html=True)
