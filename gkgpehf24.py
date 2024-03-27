@@ -8,7 +8,7 @@ st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Group Phase</h1>", u
 left_co, center_co, last_co = st.columns(3)
 with left_co:
    st.title('**Goalkeeper EHF Group Phase**')
-with center_co:
+with last_co:
    image_ehf_logo = Image.open('ehflogo.png')
    st.image(image_ehf_logo)
 
