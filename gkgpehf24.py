@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from PIL import image
+from PIL import Image
 
 st.set_page_config(page_title="TEST GK", layout="wide")
 st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Group Phase</h1>", unsafe_allow_html=True)
