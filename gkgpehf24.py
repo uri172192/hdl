@@ -5,15 +5,15 @@ from PIL import Image
 st.set_page_config(page_title="TEST GK", layout="wide")
 st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Group Phase</h1>", unsafe_allow_html=True)
 
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
+   image_ehf_logo = Image.open('ehflogo.png')
+   st.image(image_ehf_logo)
+
 df = pd.read_excel("dfgkgp.xlsx")
 
 # Crear el expander
 expander = st.expander("➕ **EHF GK TEAMS DATA CONSULTORY**")
-
-left_co, cent_co,last_co = st.columns(3)
-with cent_co:
-   image_ehf_logo = Image.open('ehfcllogo.png')
-   st.image(image_ehf_logo)
 
 # Dentro del expander, agregar el código para seleccionar un jugador
 with expander:
