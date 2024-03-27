@@ -5,10 +5,9 @@ from PIL import Image
 st.set_page_config(page_title="TEST GK", layout="wide")
 st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Group Phase</h1>", unsafe_allow_html=True)
 
-left_co, cent_co, last_co = st.columns(3)
-with cent_co:
-   image_ehf_logo = Image.open('ehflogo.png')
-   st.image(image_ehf_logo)
+with st.columns(3)[1]:
+     st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Group Phase</h1>", unsafe_allow_html=True)
+     st.image(image_ehf_logo)
 
 df = pd.read_excel("dfgkgp.xlsx")
 
