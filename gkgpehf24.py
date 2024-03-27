@@ -52,11 +52,11 @@ with expander:
 
 # Mostrar el DataFrame completo + Search Bar:
 left_co, cent_co,last_co = st.columns(3)
-    with left_co: 
-          st.write('**EHF 23/24 Group Phase GK Data:**', df)
-    with last_co:
-          image_ehf_logo = Image.open('ehflogo.png')
-          st.image(image_ehf_logo)
+with left_co: 
+    st.write('**EHF 23/24 Group Phase GK Data:**', df)
+with last_co:
+    image_ehf_logo = Image.open('ehflogo.png')
+    st.image(image_ehf_logo)
 
 
 st.caption("🔎Source: EHF")
