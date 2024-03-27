@@ -4,10 +4,12 @@ from PIL import Image
 
 st.set_page_config(page_title="TEST GK", layout="wide")
 
-
-st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Group Phase</h1>", unsafe_allow_html=True)
-image_ehf_logo = Image.open('ehflogo.png')
-st.image(image_ehf_logo)
+left_co, cent_co,last_co = st.columns(3)
+with lef_co:
+    image_ehf_logo = Image.open('ehflogo.png')
+    st.image(image_ehf_logo)
+with last_co:
+    st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Group Phase</h1>", unsafe_allow_html=True)
 
 df = pd.read_excel("dfgkgp.xlsx")
 
@@ -51,12 +53,8 @@ with expander:
 
 
 # Mostrar el DataFrame completo + Search Bar:
-left_co, cent_co,last_co = st.columns(3)
-with left_co: 
-    st.write('**EHF 23/24 Group Phase GK Data:**', df)
-with last_co:
-    image_ehf_logo = Image.open('ehflogo.png')
-    st.image(image_ehf_logo)
+st.write('**EHF 23/24 Group Phase GK Data:**', df)
+
 
 
 st.caption("🔎Source: EHF")
