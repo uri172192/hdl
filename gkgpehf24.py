@@ -6,12 +6,6 @@ st.set_page_config(page_title="TEST GK", layout="wide")
 
 st.title("Goalkeeper EHF Champions League Data Group Phase")
 
-col1, col2, col3 = st.columns(3)
-with col2:
-    image_ehf_logo = Image.open('ehflogo.png')
-    st.image(image_ehf_logo)
-
-
 df = pd.read_excel("dfgkgp.xlsx")
 
 # Crear el expander
@@ -72,5 +66,5 @@ with col1:
     image_ehf_logo = Image.open('ehflogo.png')
     st.image(image_ehf_logo)
 with col2:
-    hdl = Image.open('HDL.png')
+    hdl = Image.open('HDL-blanc.png')
     st.image(hdl)
