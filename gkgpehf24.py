@@ -4,10 +4,10 @@ from PIL import Image
 
 st.set_page_config(page_title="TEST GK", layout="wide")
 
-left_co, cent_co,last_co = st.columns(3)
+left_co,last_co = st.columns(2)
 with left_co:
    st.markdown("<h1 style='text-align: center;'>Goalkeeper EHF Group Phase</h1>", unsafe_allow_html=True)
-with cent_co:
+with last_co:
    image_ehf_logo = Image.open('ehflogo.png')
    st.image(image_ehf_logo)
 
