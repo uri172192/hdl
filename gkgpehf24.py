@@ -77,7 +77,7 @@ image = Image.open('logohdl.png')
 
 st.caption("🔎Source: EHF")
 expander = st.expander(" ➕ **LEGEND**")
-expander.write("**SA%** = Saves %)
+expander.write("**SA%** = Saves %")
 expander.write("**GC** = Goals Conceded")
 expander.write("**NºMSA** = Number of Saves made by X distance")
 expander.write("**NºMSO** = Number of Shots received by X distance")
