@@ -136,7 +136,7 @@ if len(selected_players) == 2:
                 visible=True,
                 range=[0, 100],
                 tickvals=[50, 90],
-                ticktext=["50", "90"],
+                ticktext=["20","30","40","50","60","70","80","90"],
                 ticks="outside",
                 ),
             ),
