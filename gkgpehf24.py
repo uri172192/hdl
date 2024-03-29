@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 from PIL import Image
-from soccerplots.radar_chart import Radar
 import matplotlib.pyplot as plt
 import pandas as pd
 from math import pi
