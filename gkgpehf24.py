@@ -3,6 +3,7 @@ import pandas as pd
 from PIL import Image
 import matplotlib.pyplot as plt
 from math import pi
+import plotly.graph_objects as go
 
 st.set_page_config(page_title="GK EHF DATA", page_icon="favicon-32x32.png", layout="wide")
 
@@ -103,7 +104,7 @@ if len(selected_players) == 2:
     gk_selected = df[df['Name'].isin(selected_players)]
     
     # Crear el gráfico de radar
-    categories = ['SA', 'Shots', '7MSA', '6MSA', '9MSA', 'WSA']
+    categories = ['Saves', 'Shots', '7MSA', '6MSA', '9MSA', 'WSA']
     
     fig = go.Figure()
     
@@ -152,7 +153,7 @@ else:
     # ... Código previo ...
 
 # Definir las categorías para el gráfico de radar
-categories = ['SA', 'Shots', '7MSA', '6MSA', '9MSA', 'WSA']
+categories = ['Saves', 'Shots', '7MSA', '6MSA', '9MSA', 'WSA']
 
 # Crear una tabla con los valores de cada variable por cada jugador
 table_data = []
