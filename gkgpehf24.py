@@ -150,7 +150,10 @@ else:
     st.warning('Selecciona exactamente dos jugadores para poder comparar.')
     
     # ... Código previo ...
-    
+
+# Definir las categorías para el gráfico de radar
+categories = ['SA', 'Shots', '7MSA', '6MSA', '9MSA', 'WSA']
+
 # Crear una tabla con los valores de cada variable por cada jugador
 table_data = []
 for player in selected_players:
