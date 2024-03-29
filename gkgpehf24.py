@@ -135,8 +135,8 @@ if len(selected_players) == 2:
             radialaxis=dict(
                 visible=True,
                 range=[0, 100],
-                tickvals=[50, 100],
-                ticktext=["50", "100"],
+                tickvals=[50, 90],
+                ticktext=["50", "90"],
                 ticks="outside",
                 ),
             ),
