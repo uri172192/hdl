@@ -186,11 +186,4 @@ with expander:
         st.write(styled_table)
     else:
         st.error("table_df no es un DataFrame válido.")
-        
-        
-    # Resto del código ...
-        
-    st.divider()
-    st.caption("🔎 Source: EHF")
-    expander = st.expander(" ➕ **LEGEND**")
-    expander.write("**NºMSA** = Saves made by X distance")
+
