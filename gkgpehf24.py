@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 import matplotlib.pyplot as plt
-import pandas as pd
 from math import pi
 
 st.set_page_config(page_title="GK EHF DATA", page_icon="favicon-32x32.png", layout="wide")
