@@ -100,7 +100,7 @@ selected_players = st.multiselect('Selecciona dos porteros:', max_selections=2, 
 if len(selected_players) == 2:
     
     # Filtrar los datos según los jugadores seleccionados
-    gk_selected = df[df['Name'] == gk].isin(selected_players)
+    gk_selected = df[df['Name'].isin(selected_players)]
     
     # Crear el gráfico de radar
     categories = ['SA', 'Shots', '7MSA', '6MSA', '9MSA', 'WSA']
@@ -111,7 +111,7 @@ if len(selected_players) == 2:
     colors = ['blue', 'red']
     
     for i, player in enumerate(selected_players):
-        values =   gk_selected = df[df['Name'] == gk] == player][categories].values[0]
+        values =   gk_selected = df[df['Name'] == player][categories].values[0]
         values = values.tolist()
         values.append(values[0])  # Agregar el primer valor al final para cerrar el polígono
     
