@@ -134,7 +134,7 @@ if len(selected_players) == 2:
         polar=dict(
             radialaxis=dict(
                 visible=True,
-                range=[0, 150],
+                range=[0, 100],
                 tickvals=[50, 100],
                 ticktext=["50", "100"],
                 ticks="outside",
