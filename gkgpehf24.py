@@ -94,7 +94,7 @@ expander.write("**WSO** = Number of wing shots received")
 
 # Generar una clave única para el widget multiselect
 player_selection_key = "player_selection"
-selected_players = st.multiselect('Selecciona dos porteros:', max_selections=2, key=player_selection_key, placeholder="Choose your Goalkeepers")
+selected_players = st.multiselect('Selecciona dos porteros:', df['Name'],max_selections=2, key=player_selection_key, placeholder="Choose your Goalkeepers")
     
 # Validación para asegurarse de que se seleccionen exactamente dos jugadores
 if len(selected_players) == 2:
