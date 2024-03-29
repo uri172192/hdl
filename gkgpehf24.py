@@ -69,28 +69,6 @@ with expander:
     else:
         st.warning('Please, write a GK Name.')
 
- 
-# Mostrar el DataFrame completo + Search Bar:
-# Redondear los valores a 2 decimales
-df_rounded = df.round(2)
-st.write('🗃️**EHF 23/24 Group Phase GK Data:**', df_rounded)
-
-
-image = Image.open('logohdl.png')
-
-st.caption("🔎Source: EHF")
-expander = st.expander(" ➕ **LEGEND**")
-expander.write("**SA%** = Saves %")
-expander.write("**GC** = Goals Conceded")
-expander.write("**NºMSA** = Number of Saves made by X distance")
-expander.write("**NºMSO** = Number of Shots received by X distance")
-expander.write("**WSA** = Number of saves made from wing shots")
-expander.write("**WSO** = Number of wing shots received")
-
-
-#with right_co:
-    #image1 = Image.open('ehflogo.png')
-    #st.image(image1)
 
 # Crear el expander
 expander = st.expander("➕ **EHF CL GK RADARCHART CONSULTORY** 🥅🤾🏿‍♂")
@@ -186,4 +164,31 @@ with expander:
         st.write(styled_table)
     else:
         st.error("table_df no es un DataFrame válido.")
+
+
+
+
+# Mostrar el DataFrame completo:
+# Redondear los valores a 2 decimales
+df_rounded = df.round(2)
+st.write('🗃️**EHF 23/24 Group Phase GK Data:**', df_rounded)
+
+
+image = Image.open('logohdl.png')
+
+st.caption("🔎Source: EHF")
+expander = st.expander(" ➕ **LEGEND**")
+expander.write("**SA%** = Saves %")
+expander.write("**GC** = Goals Conceded")
+expander.write("**NºMSA** = Number of Saves made by X distance")
+expander.write("**NºMSO** = Number of Shots received by X distance")
+expander.write("**WSA** = Number of saves made from wing shots")
+expander.write("**WSO** = Number of wing shots received")
+
+
+#with right_co:
+    #image1 = Image.open('ehflogo.png')
+    #st.image(image1)
+
+
 
