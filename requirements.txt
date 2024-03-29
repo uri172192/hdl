@@ -10,4 +10,3 @@ PCA
 StandardScaler
 openpyxl
 soccerplots
-radar_charts
