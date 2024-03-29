@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 from soccerplots.radar_chart import Radar
+import matplotlib.pyplot as plt
+import pandas as pd
+from math import pi
 
 st.set_page_config(page_title="GK EHF DATA", page_icon="favicon-32x32.png", layout="wide")
 
@@ -67,51 +70,65 @@ with expander:
     else:
         st.warning('Please, write a GK Name.')
 
+ 
+# Set data
+df = pd.DataFrame({
+'group': ['A','B','C','D'],
+'var1': [38, 1.5, 30, 4],
+'var2': [29, 10, 9, 34],
+'var3': [8, 39, 23, 24],
+'var4': [7, 31, 33, 14],
+'var5': [28, 15, 32, 14]
+})
+ 
+# ------- PART 1: Create background
+ 
+# number of variable
+categories=list(df)[1:]
+N = len(categories)
+ 
+# What will be the angle of each axis in the plot? (we divide the plot / number of variable)
+angles = [n / float(N) * 2 * pi for n in range(N)]
+angles += angles[:1]
+ 
+# Initialise the spider plot
+ax = plt.subplot(111, polar=True)
+ 
+# If you want the first axis to be on top:
+ax.set_theta_offset(pi / 2)
+ax.set_theta_direction(-1)
+ 
+# Draw one axe per variable + add labels
+plt.xticks(angles[:-1], categories)
+ 
+# Draw ylabels
+ax.set_rlabel_position(0)
+plt.yticks([10,20,30], ["10","20","30"], color="grey", size=7)
+plt.ylim(0,40)
+ 
 
+# ------- PART 2: Add plots
+ 
+# Plot each individual = each line of the data
+# I don't make a loop, because plotting more than 3 groups makes the chart unreadable
+ 
+# Ind1
+values=df.loc[0].drop('group').values.flatten().tolist()
+values += values[:1]
+ax.plot(angles, values, linewidth=1, linestyle='solid', label="group A")
+ax.fill(angles, values, 'b', alpha=0.1)
+ 
+# Ind2
+values=df.loc[1].drop('group').values.flatten().tolist()
+values += values[:1]
+ax.plot(angles, values, linewidth=1, linestyle='solid', label="group B")
+ax.fill(angles, values, 'r', alpha=0.1)
+ 
+# Add legend
+plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
 
-## parameter names
-params = ['xAssists', 'Key Passes', 'Crosses Into Box', 'Cross Competion', 'Deep Completions', 
-          'Progressive Passes', 'Prog. Passes Accuracy%', 'Dribbles', 'Progressive Runs', 
-          'PADJ Interceptions', 'Succ. Def Actions', 'Def Duel Win%']
-
-## range values
-ranges = [(0.0, 0.15), (0.0, 0.67), (0.06, 0.63), (19.51, 50.0), (0.35, 1.61), (6.45, 11.94), (62.94, 79.46), (0.43, 4.08), (0.6, 2.33), (5.01, 7.2), (9.02, 12.48),
-          (52.44, 66.67)]
-
-## parameter value
-values = [
-    [0.11, 0.53, 0.70, 27.66, 1.05, 6.84, 84.62, 4.56, 2.22, 5.93, 8.88, 64.29],   ## for Sergino Dest
-    [0.07, 0.36, 0.16, 32.14, 1.04, 7.37, 74.46, 3.68, 2.40, 6.87, 8.97, 61.14]    ## for Nelson Semedo
-]
-
-## title
-title = dict(
-    title_name='Sergiño Dest',
-    title_color='#B6282F',
-    subtitle_name='AFC Ajax',
-    subtitle_color='#B6282F',
-    title_name_2='Nelson Semedo',
-    title_color_2='#344D94',
-    subtitle_name_2='Barcelona',
-    subtitle_color_2='#344D94',
-    title_fontsize=18,
-    subtitle_fontsize=15,
-)
-
-## endnote 
-endnote = "Visualization made by: Anmol Durgapal(@slothfulwave612)\nAll units are in per90"
-
-## instantiate object
-radar = Radar()
-
-## plot radar -- compare
-fig, ax = radar.plot_radar(ranges=ranges, params=params, values=values, 
-                           radar_color=['#B6282F', '#344D94'], 
-                           title=title, endnote=endnote,
-                           compare=True)
-
-
-
+# Show the graph
+plt.show()
 
 
 
