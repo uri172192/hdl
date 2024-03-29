@@ -11,4 +11,5 @@ PCA
 StandardScaler
 openpyxl
 math
+pi
 PIL
