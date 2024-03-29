@@ -104,7 +104,7 @@ if len(selected_players) == 2:
     gk_selected = df[df['Name'].isin(selected_players)]
     
     # Crear el gráfico de radar
-    categories = ['Saves', 'Shots', '7MSA', '6MSA', '9MSA', 'WSA']
+    categories = ['Saves', '7MSA', '6MSA', '9MSA', 'WSA']
     
     fig = go.Figure()
     
@@ -153,7 +153,7 @@ else:
     # ... Código previo ...
 
 # Definir las categorías para el gráfico de radar
-categories = ['Saves', 'Shots', '7MSA', '6MSA', '9MSA', 'WSA']
+categories = ['Saves', '7MSA', '6MSA', '9MSA', 'WSA']
 
 # Crear una tabla con los valores de cada variable por cada jugador
 table_data = []
