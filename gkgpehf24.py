@@ -104,7 +104,7 @@ if len(selected_players) == 2:
     gk_selected = df[df['Name'].isin(selected_players)]
     
     # Crear el gráfico de radar
-    categories = ['Saves', '7MSA', '6MSA', '9MSA', 'WSA']
+    categories = ['7MSA','6MSA', '9MSA', 'WSA']
     
     fig = go.Figure()
     
@@ -134,16 +134,16 @@ if len(selected_players) == 2:
         polar=dict(
             radialaxis=dict(
                 visible=True,
-                range=[0, 180],
-                tickvals=[50, 100, 150],
-                ticktext=["50", "100", "150"],
+                range=[0, 150],
+                tickvals=[50, 100],
+                ticktext=["50", "100"],
                 ticks="outside",
                 ),
             ),
             showlegend=True,
             title='Saves Made + Saves Made by Shoot Distance',
-            width=700,  # Ajusta el ancho del gráfico
-            height=500  # Ajusta la altura del gráfico
+            width=800,  # Ajusta el ancho del gráfico
+            height=600  # Ajusta la altura del gráfico
     )
     
     st.plotly_chart(fig)
@@ -153,7 +153,7 @@ else:
     # ... Código previo ...
 
 # Definir las categorías para el gráfico de radar
-categories = ['Saves', '7MSA', '6MSA', '9MSA', 'WSA']
+categories = ['7MSA', '6MSA', '9MSA', 'WSA']
 
 # Crear una tabla con los valores de cada variable por cada jugador
 table_data = []
