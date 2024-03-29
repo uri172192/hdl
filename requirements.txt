@@ -4,9 +4,11 @@ pandas
 numpy
 vega_datasets
 matplotlib.colors
+matplotlib.pyplot
 matplotlib
 plotly
 PCA
 StandardScaler
 openpyxl
 math
+PIL
