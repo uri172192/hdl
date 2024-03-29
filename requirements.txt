@@ -9,4 +9,3 @@ plotly
 PCA
 StandardScaler
 openpyxl
-soccerplots
