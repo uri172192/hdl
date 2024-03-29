@@ -158,7 +158,7 @@ for player in selected_players:
     table_data.append([player] + values.tolist())
     
 # Crear un DataFrame para la tabla
-table_df = pd.DataFrame(table_data, columns=['Jugador'] + categories)
+table_df = pd.DataFrame(table_data, columns=['Name'] + categories)
     
 # Identificar las celdas con los valores más altos
 high_value_style = 'background-color: lawngreen;'  # Estilo CSS para resaltar las celdas
