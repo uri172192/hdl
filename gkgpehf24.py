@@ -154,7 +154,7 @@ else:
 # Crear una tabla con los valores de cada variable por cada jugador
 table_data = []
 for player in selected_players:
-    values = gk_selected = df[df['Name'] == player][categories].values[0]
+    values = df[df['Name'] == player][categories].values[0]
     table_data.append([player] + values.tolist())
     
 # Crear un DataFrame para la tabla
