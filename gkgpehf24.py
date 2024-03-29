@@ -143,46 +143,46 @@ if len(selected_players) == 2:
             title='Lanzamientos Marcados/Intentados según Distancias',
             width=800,  # Ajusta el ancho del gráfico
             height=600  # Ajusta la altura del gráfico
-        )
+    )
     
-        st.plotly_chart(fig)
-    else:
-        st.warning('Selecciona exactamente dos jugadores para poder comparar.')
+    st.plotly_chart(fig)
+else:
+    st.warning('Selecciona exactamente dos jugadores para poder comparar.')
     
     # ... Código previo ...
     
-    # Crear una tabla con los valores de cada variable por cada jugador
-    table_data = []
-    for player in selected_players:
-        values = gk_selected = df[df['Name'] == gk] == player][categories].values[0]
-        table_data.append([player] + values.tolist())
+# Crear una tabla con los valores de cada variable por cada jugador
+table_data = []
+for player in selected_players:
+    values = gk_selected = df[df['Name'] == gk] == player][categories].values[0]
+    table_data.append([player] + values.tolist())
     
-    # Crear un DataFrame para la tabla
-    table_df = pd.DataFrame(table_data, columns=['Jugador'] + categories)
+# Crear un DataFrame para la tabla
+table_df = pd.DataFrame(table_data, columns=['Jugador'] + categories)
     
-    # Identificar las celdas con los valores más altos
-    high_value_style = 'background-color: lawngreen;'  # Estilo CSS para resaltar las celdas
+# Identificar las celdas con los valores más altos
+high_value_style = 'background-color: lawngreen;'  # Estilo CSS para resaltar las celdas
     
-    for col in categories:
-        max_value = table_df[col].max()
-        table_df[col] = table_df.apply(
-            lambda row: f"{row[col]} ⬆️" if row[col] == max_value else row[col],
-            axis=1
-        )
+for col in categories:
+    max_value = table_df[col].max()
+    table_df[col] = table_df.apply(
+        lambda row: f"{row[col]} ⬆️" if row[col] == max_value else row[col],
+        axis=1
+    )
     
-    # Mostrar la tabla con estilos CSS
-    if isinstance(table_df, pd.DataFrame):
-        # Aplicar estilos al DataFrame
-        styled_table = table_df.style.applymap(lambda x: high_value_style if '⬆️' in str(x) else '', subset=pd.IndexSlice[:, categories])
-        # Renderizar el DataFrame estilizado usando st.write
-        st.write(styled_table)
-    else:
-        st.error("table_df no es un DataFrame válido.")
+# Mostrar la tabla con estilos CSS
+if isinstance(table_df, pd.DataFrame):
+    # Aplicar estilos al DataFrame
+    styled_table = table_df.style.applymap(lambda x: high_value_style if '⬆️' in str(x) else '', subset=pd.IndexSlice[:, categories])
+    # Renderizar el DataFrame estilizado usando st.write
+    st.write(styled_table)
+else:
+    st.error("table_df no es un DataFrame válido.")
     
     
-    # Resto del código ...
+# Resto del código ...
     
-    st.divider()
-    st.caption("🔎Fuente: EHF")
-    expander = st.expander(" ➕ **LEGEND**")
-    expander.write("**NºMSA** = Saves made by X distance")
+st.divider()
+st.caption("🔎Fuente: EHF")
+expander = st.expander(" ➕ **LEGEND**")
+expander.write("**NºMSA** = Saves made by X distance")
