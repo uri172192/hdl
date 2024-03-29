@@ -141,8 +141,8 @@ if len(selected_players) == 2:
                 ),
             ),
             showlegend=True,
-            title='Saves Made + Saves Made by Shoot Distances',
-            width=800,  # Ajusta el ancho del gráfico
+            title='Saves Made + Saves Made by Shoot Distance',
+            width=700,  # Ajusta el ancho del gráfico
             height=600  # Ajusta la altura del gráfico
     )
     
