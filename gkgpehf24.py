@@ -141,7 +141,7 @@ if len(selected_players) == 2:
                 ),
             ),
             showlegend=True,
-            title='Lanzamientos Marcados/Intentados según Distancias',
+            title='Saves Made + Saves Made by Shoot Distances',
             width=800,  # Ajusta el ancho del gráfico
             height=600  # Ajusta la altura del gráfico
     )
@@ -187,6 +187,6 @@ else:
 # Resto del código ...
     
 st.divider()
-st.caption("🔎Fuente: EHF")
+st.caption("🔎 Source: EHF")
 expander = st.expander(" ➕ **LEGEND**")
 expander.write("**NºMSA** = Saves made by X distance")
