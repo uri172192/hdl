@@ -1,4 +1,4 @@
-streamlit==1.6
+streamlit==2.0
 click==8.0.3
 altair
 pandas
