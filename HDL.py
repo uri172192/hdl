@@ -105,7 +105,7 @@ def page2():
         x='ToG',
         y=alt.Y("Jugador").sort('-x'),
         text='ToG',
-        tooltip=['Jugador', 'Equipo', 'ToG', 'ToS', 'To%'],
+        tooltip=['Jugador', 'Equipo', 'Posicion', 'ToG', 'ToS', 'To%'],
         color=alt.Color("Equipo", scale=alt.Scale(domain=list(team_colors.keys()), range=list(team_colors.values())))
     )
     plotfinal = graph.mark_bar() + graph.mark_text(align='left', dx=2)
