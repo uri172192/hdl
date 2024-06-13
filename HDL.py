@@ -1235,7 +1235,7 @@ def gk():
 
     st.subheader('📌Consulta el rendimiento global de los porteros según **equipo**:')
 
-    df = pd.read_excel("asobalgk2324.xlsx")
+    df = pd.read_excel("DataPorterosAsobal2324.xlsx")
     ##Conseguir lista de equipos
     Portero = df['Equipo'].unique()
 
@@ -1283,7 +1283,7 @@ def gk1():
         
     st.subheader('📌Consulta el rendimiento global de los porteros según distancia del lanzamiento:')
 
-    df = pd.read_excel("asobalgk2324.xlsx")
+    df = pd.read_excel("DataPorterosAsobal2324.xlsx")
     ##Conseguir lista de equipos
     Portero = df['Equipo'].unique()
 
@@ -1468,7 +1468,7 @@ def gk2():
         imageasobal = Image.open('apple-touch-icon.png')
         st.image(imageasobal)
     
-    df = pd.read_excel("asobalgk2324.xlsx")
+    df = pd.read_excel("DataPorterosAsobal2324.xlsx")
 
     # Verifica los nombres de los jugadores únicos en la columna 'Jugador'
     jugadores_unicos = df['Jugador'].unique()
@@ -1676,7 +1676,7 @@ def gk3():
 
     st.subheader('📌Goalkeepers Data:')
 
-    df = pd.read_excel("asobalgk2324.xlsx")
+    df = pd.read_excel("DataPorterosAsobal2324.xlsx")
 
     st.write('Consulta datos porteros Asobal:')
     st.write(df)
