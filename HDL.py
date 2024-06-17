@@ -1689,8 +1689,8 @@ def gk3():
     expander.write("**Nº** = Dorsal del portero")
     expander.write("**Gol** = Goles anotados")
     expander.write("**Ast** = Asistencias completadas")
-    expander.write("**ToP** = Total Paradas Realizadas")
-    expander.write("**ToL** = Total Lanzamientos Recibidos")
+    expander.write("**ToP** = Total Paradas realizadas")
+    expander.write("**ToL** = Total Lanzamientos recibidos")
     expander.write("**To%** = Porcentaje total de paradas")
     expander.write("**L6 (Lanzamientos de 6 metros), L9 (Lanzamientos de 9 metros), L7 (Penaltis), LCO (Lanzamientos de contraataque)** = Siguen el mismo proceso de paradas, lanzamientos recibidos y porcentaje de paradas según cada distancia o tipo de lanzamiento.")
     
@@ -1717,8 +1717,8 @@ def gk3():
     expander.write("**Nº** = Dorsal del portero")
     expander.write("**Gol** = Goles anotados")
     expander.write("**Ast** = Asistencias completadas")
-    expander.write("**ToP** = Total Paradas Realizadas")
-    expander.write("**ToL** = Total Lanzamientos Recibidos")
+    expander.write("**ToP** = Total Paradas realizadas")
+    expander.write("**ToL** = Total Lanzamientos recibidos")
     expander.write("**To%** = Porcentaje total de paradas")
     expander.write("**L6 (Lanzamientos de 6 metros), L9 (Lanzamientos de 9 metros), L7 (Penaltis), LCO (Lanzamientos de contraataque)** = Siguen el mismo proceso de paradas, lanzamientos recibidos y porcentaje de paradas según cada distancia o tipo de lanzamiento.")
     
