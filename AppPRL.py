@@ -33,7 +33,7 @@ with st.expander("📥​ Tracking Data", expanded=False):
 
 
     st.markdown("""
-    **Què és l'RPE i l'ACWR?**  
+    🔍​ **Què és l'RPE i l'ACWR?** 🔍​  
     - **RPE (Rate of Perceived Exertion)**: És una escala de l'1 al 10 que indica com ha percebut el/la jugador/a la intensitat de l'entrenament.  
     - **Càrrega d'entrenament** = Durada (minuts) × RPE  
     - **ACWR (Acute:Chronic Workload Ratio)**: És la relació entre la càrrega de la darrera setmana i la càrrega mitjana de les últimes 4 setmanes. S'utilitza per predir el risc de lesió.
