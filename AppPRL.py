@@ -17,9 +17,9 @@ with st.expander("Tracking Data", expanded=False):
     with st.form("formulari"):
         col1, col2 = st.columns(2)
         with col1:
-            nom = st.text_input("Nom de la jugadora", "Carla")
+            nom = st.text_input("Nom del jugador", "")
             data = st.date_input("Data", datetime.date.today())
-            tipus = st.selectbox("Tipus d'entrenament", ["Força", "Resistència", "Tècnica", "Partit", "Altres"])
+            tipus = st.selectbox("Tipus d'entrenament", ["Físic + Pista","Pista", "Físic", "Partit", "Altres"])
         with col2:
             durada = st.number_input("Durada (min)", value=None, placeholder="Durada Entrenament?")
             rpe = st.slider("RPE (1-10)", 1, 10, 5)
