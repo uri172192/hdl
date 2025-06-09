@@ -31,6 +31,18 @@ with st.expander("📥​ Tracking Data", expanded=False):
             st.session_state["data"] = pd.concat([st.session_state["data"], nou], ignore_index=True)
             st.success("Sessio registrada correctament")
 
+
+    st.markdown("""
+    **Què és l'RPE i l'ACWR?**  
+    - **RPE (Rate of Perceived Exertion)**: És una escala de l'1 al 10 que indica com ha percebut la jugadora la intensitat de l'entrenament.  
+    - **Càrrega d'entrenament** = Durada (minuts) × RPE  
+    - **ACWR (Acute:Chronic Workload Ratio)**: És la relació entre la càrrega de la darrera setmana i la càrrega mitjana de les últimes 4 setmanes. S'utilitza per predir el risc de lesió.
+
+    - Si l'ACWR > 1.5: risc alt de lesió  
+    - Si l'ACWR < 0.8: risc de desentrenament  
+    - Zona segura: entre 0.8 i 1.3
+    """)
+
 # --- MOSTRAR DADES ---
 with st.expander("📅 Dataset", expanded=False):
     st.subheader("📅 Registre")
