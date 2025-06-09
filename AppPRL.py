@@ -12,8 +12,8 @@ if "data" not in st.session_state:
     st.session_state["data"] = pd.DataFrame(columns=["Data", "Nom", "Durada", "RPE", "Tipus", "Càrrega"])
 
 # --- FORMULARI D'ENTRENAMENT ---
-with st.expander("Tracking Data", expanded=False):
-    st.subheader("Registrar una nova sessió")
+with st.expander("📥​ Tracking Data", expanded=False):
+    st.subheader("📥​ Registrar una nova sessió")
     with st.form("formulari"):
         col1, col2 = st.columns(2)
         with col1:
@@ -25,7 +25,7 @@ with st.expander("Tracking Data", expanded=False):
             rpe = st.slider("RPE (1-10)", 1, 10, 5)
         enviar = st.form_submit_button("Guardar")
         if enviar:
-            carrega = durada * rpe
+            carrega = int(durada) * int(rpe)
             nou = pd.DataFrame([[data, nom, durada, rpe, tipus, carrega]],
                                columns=["Data", "Nom", "Durada", "RPE", "Tipus", "Càrrega"])
             st.session_state["data"] = pd.concat([st.session_state["data"], nou], ignore_index=True)
