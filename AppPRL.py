@@ -46,14 +46,6 @@ with st.expander("📅 Dataset", expanded=False):
 
     st.dataframe(df, use_container_width=True)
 
-    # --- FILTRE PER TIPUS ENTRENAMENT ---
-    noms_entrenos = df["Nom"].unique().tolist()
-    nom_entreno_triat = st.selectbox("Filtrar per tipus d'entrenament", ["Tots"] + noms_entrenos)
-    if nom_entreno_triat != "Tots":
-        df = df[df["Tipus"] == nom_entreno_triat]
-
-    st.dataframe(df, use_container_width=True)
-
 # --- GRÀFIC DE CÀRREGA ---
 if not df.empty:
     df_group = df.groupby("Data").agg({"Càrrega": "sum"}).reset_index()
