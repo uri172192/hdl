@@ -50,7 +50,7 @@ with st.expander("📅 Dataset", expanded=False):
     noms_entrenos = df["Nom"].unique().tolist()
     nom_entreno_triat = st.selectbox("Filtrar per tipus d'entrenament", ["Tots"] + noms_entrenos)
     if nom_entreno_triat != "Tots":
-        df = df[df["Tipus"] == nom_seleccionat]
+        df = df[df["Tipus"] == nom_entreno_triat]
 
     st.dataframe(df, use_container_width=True)
 
