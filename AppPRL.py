@@ -21,7 +21,7 @@ with st.expander("📥​ Tracking Data", expanded=False):
             data = st.date_input("Data", datetime.date.today())
             tipus = st.selectbox("Tipus d'entrenament", ["Físic + Pista","Pista", "Físic", "Partit", "Altres"])
         with col2:
-            durada = st.select_slider("Durada (min)", options=[30, 60, 90, 120], value=60)
+            durada = st.select_slider("Durada (min)", options=[30, 60, 90, 120, 140, 160], value=90)
             rpe = st.select_slider("RPE (1-10)", options=list(range(1, 11)), value=5)
         enviar = st.form_submit_button("Guardar")
         if enviar:
