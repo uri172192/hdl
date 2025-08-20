@@ -82,10 +82,11 @@ if not df.empty:
         st.metric("ACWR actual", f"{acwr_actual:.2f}")
 
         if acwr_actual > 1.5:
-            st.error("⚠️ ACWR molt alt! Risc de lesió elevat. Considera descans o sessions més lleugeres.")
+            st.error("⚠️ ACWR molt alt. Risc de lesió elevat. Considerar descans o sessions més lleugeres.")
         elif acwr_actual > 1.3:
-            st.warning("⚠️ ACWR elevat. Revisa la càrrega i parla amb la jugadora si té molèsties.")
+            st.warning("⚠️ ACWR elevat. Revisa la càrrega d'entrenament i avaluar l'estat físic jugador si té molèsties.")
         elif acwr_actual < 0.8:
             st.info("ℹ️ ACWR baix. Pot indicar desentrenament. Considera augmentar l'activitat progressivament.")
         else:
             st.success("✅ ACWR en zona segura.")
+
