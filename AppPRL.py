@@ -53,7 +53,7 @@ with st.expander("📅 Dataset", expanded=False):
 
     # --- FILTRE PER NOM ---
     noms_disponibles = df["Nom"].unique().tolist()
-    nom_seleccionat = st.selectbox("Filtrar per nom de jugadora", ["Tots"] + noms_disponibles)
+    nom_seleccionat = st.selectbox("Filtrar per nom de jugador", ["Tots"] + noms_disponibles)
     if nom_seleccionat != "Tots":
         df = df[df["Nom"] == nom_seleccionat]
 
@@ -89,5 +89,6 @@ if not df.empty:
             st.info("ℹ️ ACWR baix. Pot indicar desentrenament. Considera augmentar l'activitat progressivament.")
         else:
             st.success("✅ ACWR en zona segura.")
+
 
 
