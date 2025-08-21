@@ -26,7 +26,7 @@ with st.expander("📥 Tracking Data", expanded=False):
             data = st.date_input("Data", datetime.date.today())
             tipus = st.selectbox("Tipus d'entrenament", ["Força", "Resistència", "Tècnica", "Partit", "Altres"])
         with col2:
-            durada = st.number_input("Durada (min)", min_value=1, step=1)
+            durada = st.slider("Durada (min)", 30, 180, 90, step=10)  # 🔄 ara igual que RPE
             rpe = st.slider("RPE (1-10)", 1, 10, 5)
         enviar = st.form_submit_button("Guardar")
 
@@ -40,24 +40,33 @@ with st.expander("📥 Tracking Data", expanded=False):
             st.session_state["data"].to_excel(FITXER_EXCEL, index=False)
             st.success("Sessió registrada i guardada en Excel ✅")
 
-# --- MOSTRAR DADES ---
+# --- MOSTRAR I EDITAR DADES ---
 with st.expander("📅 Dataset", expanded=True):
-    st.subheader("📅 Registre")
+    st.subheader("📅 Registre (editable)")
     df = st.session_state["data"].copy()
     if not df.empty:
         df["Data"] = pd.to_datetime(df["Data"])
         df = df.sort_values("Data")
 
-        noms_disponibles = df["Nom"].unique().tolist()
-        nom_seleccionat = st.selectbox("Filtrar per nom de jugadora", ["Totes"] + noms_disponibles)
-        if nom_seleccionat != "Totes":
-            df = df[df["Nom"] == nom_seleccionat]
+        # --- TAULA EDITABLE ---
+        df_editat = st.data_editor(
+            df,
+            num_rows="dynamic",      # permet afegir o eliminar files
+            use_container_width=True
+        )
 
-        st.dataframe(df, use_container_width=True)
+        # --- BOTÓ PER GUARDAR CANVIS ---
+        if st.button("💾 Guardar canvis a Excel"):
+            st.session_state["data"] = df_editat
+            st.session_state["data"].to_excel(FITXER_EXCEL, index=False)
+            st.success("Canvis guardats a l’Excel ✅")
 
 # --- GRÀFIC DE CÀRREGA ---
-if not df.empty:
-    df_group = df.groupby("Data").agg({"Càrrega": "sum"}).reset_index()
+if not st.session_state["data"].empty:
+    df_group = st.session_state["data"].copy()
+    df_group["Data"] = pd.to_datetime(df_group["Data"])
+    df_group = df_group.groupby("Data").agg({"Càrrega": "sum"}).reset_index()
+
     chart = alt.Chart(df_group).mark_area(opacity=0.5).encode(
         x="Data:T",
         y="Càrrega:Q"
