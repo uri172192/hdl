@@ -73,8 +73,11 @@ with st.expander("📥 Tracking Data", expanded=False):
             st.success("Sessió registrada i guardada en Excel ✅")
     st.markdown(""" 🔍​ **Què és l'RPE i l'ACWR?** 🔍​
     - **RPE (Rate of Perceived Exertion)**: És una escala de l'1 al 10 que indica com ha percebut el/la jugador/a la intensitat de l'entrenament. 
-            - **Càrrega d'entrenament** = Durada (minuts) × RPE 
-    - **ACWR (Acute:Chronic Workload Ratio)**: És la relació entre la càrrega de la darrera setmana i la càrrega mitjana de les últimes 4 setmanes. S'utilitza per predir el risc de lesió. - Si l'**ACWR** > 1.5: risc alt de lesió - Si l'**ACWR** < 0.8: risc d'entrar en baixa forma - **Zona segura**: entre 0.8 i 1.3 """)
+    - **Càrrega d'entrenament** = Durada (minuts) × RPE 
+    - **ACWR (Acute:Chronic Workload Ratio)**: És la relació entre la càrrega de la darrera setmana i la càrrega mitjana de les últimes 4 setmanes. S'utilitza per predir el risc de lesió. 
+    - Si l'**ACWR** > 1.5: risc alt de lesió 
+    - Si l'**ACWR** < 0.8: risc d'entrar en baixa forma 
+    - **Zona segura**: entre 0.8 i 1.3 """)
 
 # ---------- Dataset editable + filtre ----------
 with st.expander("📅 Dataset", expanded=True):
@@ -205,6 +208,7 @@ if not df_plot.empty:
     acwr_actual = df_acwr["ACWR"].iloc[-1]
     if pd.notna(acwr_actual):
         st.metric("ACWR actual", f"{acwr_actual:.2f}")
+
 
 
 
