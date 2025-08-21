@@ -81,7 +81,7 @@ with st.expander("📥 Tracking Data", expanded=False):
 
 # ---------- Dataset editable + filtre ----------
 with st.expander("📅 Dataset", expanded=True):
-    st.subheader("📅 Registre (editable)")
+    st.subheader("📅 Registre")
 
     df_total = st.session_state["data"].copy()
     if not df_total.empty:
@@ -208,6 +208,7 @@ if not df_plot.empty:
     acwr_actual = df_acwr["ACWR"].iloc[-1]
     if pd.notna(acwr_actual):
         st.metric("ACWR actual", f"{acwr_actual:.2f}")
+
 
 
 
