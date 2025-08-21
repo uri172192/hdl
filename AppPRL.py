@@ -2,14 +2,27 @@ import streamlit as st
 import pandas as pd
 import datetime
 import altair as alt
+import os
 
 # --- CONFIGURACIÓ GENERAL ---
 st.set_page_config(page_title="Gestor de Càrrega i Prevenció de Lesions", layout="wide")
 st.title("🏋️ Gestor de Càrrega d'Entrenament i Prevenció de Lesions")
 
+DATA_FILE = "dades.csv"
+
+# --- FUNCIONS AUXILIARS ---
+def carregar_dades():
+    if os.path.exists(DATA_FILE):
+        return pd.read_csv(DATA_FILE, parse_dates=["Data"])
+    else:
+        return pd.DataFrame(columns=["Data", "Nom", "Durada", "RPE", "Tipus", "Càrrega"])
+
+def guardar_dades(df):
+    df.to_csv(DATA_FILE, index=False)
+
 # --- INICIALITZACIÓ DE DADES ---
 if "data" not in st.session_state:
-    st.session_state["data"] = pd.DataFrame(columns=["Data", "Nom", "Durada", "RPE", "Tipus", "Càrrega"])
+    st.session_state["data"] = carregar_dades()
 
 # --- FORMULARI D'ENTRENAMENT ---
 with st.expander("📥​ Tracking Data", expanded=False):
@@ -24,28 +37,23 @@ with st.expander("📥​ Tracking Data", expanded=False):
             durada = st.select_slider("Durada (min)", options=[30, 60, 90, 120, 140, 160], value=90)
             rpe = st.select_slider("RPE (1-10)", options=list(range(1, 11)), value=5)
         enviar = st.form_submit_button("Guardar")
-        if enviar:
+        if enviar and nom.strip() != "":
             carrega = int(durada) * int(rpe)
             nou = pd.DataFrame([[data, nom, durada, rpe, tipus, carrega]],
                                columns=["Data", "Nom", "Durada", "RPE", "Tipus", "Càrrega"])
             st.session_state["data"] = pd.concat([st.session_state["data"], nou], ignore_index=True)
-            st.success("Sessio registrada correctament")
-
+            guardar_dades(st.session_state["data"])
+            st.success("Sessió registrada correctament")
 
     st.markdown("""
     🔍​ **Què és l'RPE i l'ACWR?** 🔍​  
     - **RPE (Rate of Perceived Exertion)**: És una escala de l'1 al 10 que indica com ha percebut el/la jugador/a la intensitat de l'entrenament.  
     - **Càrrega d'entrenament** = Durada (minuts) × RPE  
-    - **ACWR (Acute:Chronic Workload Ratio)**: És la relació entre la càrrega de la darrera setmana i la càrrega mitjana de les últimes 4 setmanes. S'utilitza per predir el risc de lesió.
-    
-    - Si l'**ACWR** > 1.5: risc alt de lesió  
-    - Si l'**ACWR** < 0.8: risc d'entrar en baixa forma  
-    
-    - **Zona segura**: entre 0.8 i 1.3
+    - **ACWR (Acute:Chronic Workload Ratio)**: És la relació entre la càrrega de la darrera setmana i la càrrega mitjana de les últimes 4 setmanes.  
     """)
 
-# --- MOSTRAR DADES ---
-with st.expander("📅 Dataset", expanded=False):
+# --- MOSTRAR I EDITAR DADES ---
+with st.expander("📅 Dataset", expanded=True):
     st.subheader("📅 Registre")
     df = st.session_state["data"].copy()
     df["Data"] = pd.to_datetime(df["Data"])
@@ -58,6 +66,16 @@ with st.expander("📅 Dataset", expanded=False):
         df = df[df["Nom"] == nom_seleccionat]
 
     st.dataframe(df, use_container_width=True)
+
+    # --- ELIMINAR REGISTRE ---
+    if not df.empty:
+        idx = st.selectbox("Selecciona l'índex del registre a eliminar", options=df.index)
+        if st.button("Eliminar registre"):
+            st.session_state["data"].drop(idx, inplace=True)
+            st.session_state["data"].reset_index(drop=True, inplace=True)
+            guardar_dades(st.session_state["data"])
+            st.success("Registre eliminat correctament")
+            st.experimental_rerun()
 
 # --- GRÀFIC DE CÀRREGA ---
 if not df.empty:
@@ -82,14 +100,10 @@ if not df.empty:
         st.metric("ACWR actual", f"{acwr_actual:.2f}")
 
         if acwr_actual > 1.5:
-            st.error("⚠️ ACWR molt alt. Risc de lesió elevat. Considerar descans o sessions més lleugeres.")
+            st.error("⚠️ ACWR molt alt. Risc de lesió elevat.")
         elif acwr_actual > 1.3:
-            st.warning("⚠️ ACWR elevat. Revisa la càrrega d'entrenament i avaluar l'estat físic jugador si té molèsties.")
+            st.warning("⚠️ ACWR elevat. Revisa la càrrega d'entrenament.")
         elif acwr_actual < 0.8:
-            st.info("ℹ️ ACWR baix. Pot indicar desentrenament. Considera augmentar l'activitat progressivament.")
+            st.info("ℹ️ ACWR baix. Pot indicar desentrenament.")
         else:
             st.success("✅ ACWR en zona segura.")
-
-
-
-
