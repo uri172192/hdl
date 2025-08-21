@@ -4,71 +4,58 @@ import datetime
 import altair as alt
 import os
 
-# --- CONFIGURACIÓ GENERAL ---
 st.set_page_config(page_title="Gestor de Càrrega i Prevenció de Lesions", layout="wide")
 st.title("🏋️ Gestor de Càrrega d'Entrenament i Prevenció de Lesions")
 
-FITXER = "registres.csv"
+FITXER_EXCEL = "carrega_entrenaments.xlsx"
 
-# --- FUNCIONS AUXILIARS ---
-def carregar_dades():
-    if os.path.exists(FITXER):
-        return pd.read_csv(FITXER, parse_dates=["Data"])
-    else:
-        return pd.DataFrame(columns=["Data", "Nom", "Durada", "RPE", "Tipus", "Càrrega"])
-
-def guardar_dades(df):
-    df.to_csv(FITXER, index=False)
-
-# --- INICIALITZACIÓ DE DADES ---
+# --- CARREGAR DADES DE L'EXCEL SI EXISTEIX ---
 if "data" not in st.session_state:
-    st.session_state["data"] = carregar_dades()
+    if os.path.exists(FITXER_EXCEL):
+        st.session_state["data"] = pd.read_excel(FITXER_EXCEL)
+    else:
+        st.session_state["data"] = pd.DataFrame(columns=["Data", "Nom", "Durada", "RPE", "Tipus", "Càrrega"])
 
 # --- FORMULARI D'ENTRENAMENT ---
-with st.expander("📥​ Tracking Data", expanded=False):
-    st.subheader("📥​ Registrar una nova sessió")
+with st.expander("📥 Tracking Data", expanded=False):
+    st.subheader("Registrar una nova sessió")
     with st.form("formulari"):
         col1, col2 = st.columns(2)
         with col1:
-            nom = st.text_input("Nom del jugador", "")
+            nom = st.text_input("Nom de la jugadora", "Carla")
             data = st.date_input("Data", datetime.date.today())
-            tipus = st.selectbox("Tipus d'entrenament", ["Físic + Pista","Pista", "Físic", "Partit", "Altres"])
+            tipus = st.selectbox("Tipus d'entrenament", ["Força", "Resistència", "Tècnica", "Partit", "Altres"])
         with col2:
-            durada = st.select_slider("Durada (min)", options=[30, 60, 90, 120, 140, 160], value=90)
-            rpe = st.select_slider("RPE (1-10)", options=list(range(1, 11)), value=5)
+            durada = st.number_input("Durada (min)", min_value=1, step=1)
+            rpe = st.slider("RPE (1-10)", 1, 10, 5)
         enviar = st.form_submit_button("Guardar")
-        if enviar and nom.strip() != "":
-            carrega = int(durada) * int(rpe)
+
+        if enviar:
+            carrega = durada * rpe
             nou = pd.DataFrame([[data, nom, durada, rpe, tipus, carrega]],
                                columns=["Data", "Nom", "Durada", "RPE", "Tipus", "Càrrega"])
             st.session_state["data"] = pd.concat([st.session_state["data"], nou], ignore_index=True)
-            guardar_dades(st.session_state["data"])  # 🔴 Ara es guarda al CSV
-            st.success("Sessió registrada correctament")
+            st.success("Sessió registrada correctament ✅")
 
-# --- MOSTRAR I EDITAR DADES ---
+# --- MOSTRAR DADES ---
 with st.expander("📅 Dataset", expanded=True):
     st.subheader("📅 Registre")
     df = st.session_state["data"].copy()
-    df["Data"] = pd.to_datetime(df["Data"])
-    df = df.sort_values("Data")
-
-    # --- FILTRE PER NOM ---
-    noms_disponibles = df["Nom"].unique().tolist()
-    nom_seleccionat = st.selectbox("Filtrar per nom de jugador", ["Tots"] + noms_disponibles)
-    if nom_seleccionat != "Tots":
-        df = df[df["Nom"] == nom_seleccionat]
-
-    st.dataframe(df, use_container_width=True)
-
-    # --- ELIMINAR REGISTRE ---
     if not df.empty:
-        idx = st.number_input("Introdueix l'índex del registre a eliminar", min_value=0, max_value=len(df)-1, step=1)
-        if st.button("Eliminar registre"):
-            st.session_state["data"].drop(df.index[idx], inplace=True)
-            st.session_state["data"].reset_index(drop=True, inplace=True)
-            guardar_dades(st.session_state["data"])  # 🔴 Actualitzar el CSV
-            st.success("Registre eliminat correctament")
-            st.experimental_rerun()
+        df["Data"] = pd.to_datetime(df["Data"])
+        df = df.sort_values("Data")
+
+        noms_disponibles = df["Nom"].unique().tolist()
+        nom_seleccionat = st.selectbox("Filtrar per nom de jugadora", ["Totes"] + noms_disponibles)
+        if nom_seleccionat != "Totes":
+            df = df[df["Nom"] == nom_seleccionat]
+
+        st.dataframe(df, use_container_width=True)
+
+        # --- BOTÓ PER GUARDAR A EXCEL ---
+        if st.button("💾 Guardar registres a Excel"):
+            st.session_state["data"].to_excel(FITXER_EXCEL, index=False)
+            st.success(f"Dades guardades a {FITXER_EXCEL} ✅")
 
 # --- GRÀFIC DE CÀRREGA ---
 if not df.empty:
@@ -93,9 +80,9 @@ if not df.empty:
         st.metric("ACWR actual", f"{acwr_actual:.2f}")
 
         if acwr_actual > 1.5:
-            st.error("⚠️ ACWR molt alt. Risc de lesió elevat.")
+            st.error("⚠️ ACWR molt alt! Risc de lesió elevat.")
         elif acwr_actual > 1.3:
-            st.warning("⚠️ ACWR elevat. Revisa la càrrega d'entrenament.")
+            st.warning("⚠️ ACWR elevat. Revisa la càrrega.")
         elif acwr_actual < 0.8:
             st.info("ℹ️ ACWR baix. Pot indicar desentrenament.")
         else:
