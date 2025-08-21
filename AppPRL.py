@@ -7,7 +7,7 @@ import os
 st.set_page_config(page_title="Gestor de Càrrega i Prevenció de Lesions", layout="wide")
 st.title("🏋️ Gestor de Càrrega d'Entrenament i Prevenció de Lesions")
 
-FITXER_EXCEL = "carrega_entrenaments.xlsx"
+FITXER_EXCEL = "registres_entrenament.xlsx"
 
 # --- CARREGAR DADES DE L'EXCEL SI EXISTEIX ---
 if "data" not in st.session_state:
@@ -35,7 +35,10 @@ with st.expander("📥 Tracking Data", expanded=False):
             nou = pd.DataFrame([[data, nom, durada, rpe, tipus, carrega]],
                                columns=["Data", "Nom", "Durada", "RPE", "Tipus", "Càrrega"])
             st.session_state["data"] = pd.concat([st.session_state["data"], nou], ignore_index=True)
-            st.success("Sessió registrada correctament ✅")
+
+            # --- GUARDAR DIRECTAMENT A EXCEL ---
+            st.session_state["data"].to_excel(FITXER_EXCEL, index=False)
+            st.success("Sessió registrada i guardada en Excel ✅")
 
 # --- MOSTRAR DADES ---
 with st.expander("📅 Dataset", expanded=True):
@@ -51,11 +54,6 @@ with st.expander("📅 Dataset", expanded=True):
             df = df[df["Nom"] == nom_seleccionat]
 
         st.dataframe(df, use_container_width=True)
-
-        # --- BOTÓ PER GUARDAR A EXCEL ---
-        if st.button("💾 Guardar registres a Excel"):
-            st.session_state["data"].to_excel(FITXER_EXCEL, index=False)
-            st.success(f"Dades guardades a {FITXER_EXCEL} ✅")
 
 # --- GRÀFIC DE CÀRREGA ---
 if not df.empty:
