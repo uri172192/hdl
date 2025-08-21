@@ -55,7 +55,7 @@ with st.expander("📥 Tracking Data", expanded=False):
         with col1:
             nom = st.text_input("Nom del jugador", "")
             data = st.date_input("Data", datetime.date.today())
-            tipus = st.selectbox("Tipus d'entrenament", ["Força", "Resistència", "Tècnica", "Partit", "Altres"])
+            tipus = st.selectbox("Tipus d'entrenament", ["Físic + Pista","Pista", "Físic", "Partit", "Altres"])
         with col2:
             durada = st.slider("Durada (min)", 30, 180, 90, step=10)
             rpe = st.slider("RPE (1-10)", 1, 10, 5)
@@ -208,6 +208,7 @@ if not df_plot.empty:
     acwr_actual = df_acwr["ACWR"].iloc[-1]
     if pd.notna(acwr_actual):
         st.metric("ACWR actual", f"{acwr_actual:.2f}")
+
 
 
 
