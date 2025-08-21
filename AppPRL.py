@@ -89,7 +89,7 @@ with st.expander("📅 Dataset", expanded=True):
 
         # Filtre per nom
         noms = df_total["Nom"].dropna().unique().tolist()
-        nom_seleccionat = st.selectbox("Filtrar per nom de jugadora", ["Totes"] + sorted(noms))
+        nom_seleccionat = st.selectbox("Filtrar per nom de jugador", ["Totes"] + sorted(noms))
 
         if nom_seleccionat != "Totes":
             df_view = df_total[df_total["Nom"] == nom_seleccionat].copy()
@@ -208,6 +208,7 @@ if not df_plot.empty:
     acwr_actual = df_acwr["ACWR"].iloc[-1]
     if pd.notna(acwr_actual):
         st.metric("ACWR actual", f"{acwr_actual:.2f}")
+
 
 
 
