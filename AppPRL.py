@@ -8,17 +8,17 @@ import os
 st.set_page_config(page_title="Gestor de Càrrega i Prevenció de Lesions", layout="wide")
 st.title("🏋️ Gestor de Càrrega d'Entrenament i Prevenció de Lesions")
 
-DATA_FILE = "dades.csv"
+FITXER = "registres.csv"
 
 # --- FUNCIONS AUXILIARS ---
 def carregar_dades():
-    if os.path.exists(DATA_FILE):
-        return pd.read_csv(DATA_FILE, parse_dates=["Data"])
+    if os.path.exists(FITXER):
+        return pd.read_csv(FITXER, parse_dates=["Data"])
     else:
         return pd.DataFrame(columns=["Data", "Nom", "Durada", "RPE", "Tipus", "Càrrega"])
 
 def guardar_dades(df):
-    df.to_csv(DATA_FILE, index=False)
+    df.to_csv(FITXER, index=False)
 
 # --- INICIALITZACIÓ DE DADES ---
 if "data" not in st.session_state:
@@ -42,15 +42,8 @@ with st.expander("📥​ Tracking Data", expanded=False):
             nou = pd.DataFrame([[data, nom, durada, rpe, tipus, carrega]],
                                columns=["Data", "Nom", "Durada", "RPE", "Tipus", "Càrrega"])
             st.session_state["data"] = pd.concat([st.session_state["data"], nou], ignore_index=True)
-            guardar_dades(st.session_state["data"])
+            guardar_dades(st.session_state["data"])  # 🔴 Ara es guarda al CSV
             st.success("Sessió registrada correctament")
-
-    st.markdown("""
-    🔍​ **Què és l'RPE i l'ACWR?** 🔍​  
-    - **RPE (Rate of Perceived Exertion)**: És una escala de l'1 al 10 que indica com ha percebut el/la jugador/a la intensitat de l'entrenament.  
-    - **Càrrega d'entrenament** = Durada (minuts) × RPE  
-    - **ACWR (Acute:Chronic Workload Ratio)**: És la relació entre la càrrega de la darrera setmana i la càrrega mitjana de les últimes 4 setmanes.  
-    """)
 
 # --- MOSTRAR I EDITAR DADES ---
 with st.expander("📅 Dataset", expanded=True):
@@ -69,11 +62,11 @@ with st.expander("📅 Dataset", expanded=True):
 
     # --- ELIMINAR REGISTRE ---
     if not df.empty:
-        idx = st.selectbox("Selecciona l'índex del registre a eliminar", options=df.index)
+        idx = st.number_input("Introdueix l'índex del registre a eliminar", min_value=0, max_value=len(df)-1, step=1)
         if st.button("Eliminar registre"):
-            st.session_state["data"].drop(idx, inplace=True)
+            st.session_state["data"].drop(df.index[idx], inplace=True)
             st.session_state["data"].reset_index(drop=True, inplace=True)
-            guardar_dades(st.session_state["data"])
+            guardar_dades(st.session_state["data"])  # 🔴 Actualitzar el CSV
             st.success("Registre eliminat correctament")
             st.experimental_rerun()
 
