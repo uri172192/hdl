@@ -44,9 +44,16 @@ with st.expander("📥 Tracking Data", expanded=False):
 with st.expander("📅 Dataset", expanded=True):
     st.subheader("📅 Registre (editable)")
     df = st.session_state["data"].copy()
+
     if not df.empty:
         df["Data"] = pd.to_datetime(df["Data"])
         df = df.sort_values("Data")
+
+        # --- FILTRE PER NOM ---
+        noms_disponibles = df["Nom"].unique().tolist()
+        nom_seleccionat = st.selectbox("Filtrar per nom de jugadora", ["Totes"] + noms_disponibles)
+        if nom_seleccionat != "Totes":
+            df = df[df["Nom"] == nom_seleccionat]
 
         # --- TAULA EDITABLE ---
         df_editat = st.data_editor(
@@ -57,15 +64,15 @@ with st.expander("📅 Dataset", expanded=True):
 
         # --- BOTÓ PER GUARDAR CANVIS ---
         if st.button("💾 Guardar canvis a Excel"):
-            st.session_state["data"] = df_editat
+            # Actualitzar dades globals
+            st.session_state["data"].loc[df_editat.index, :] = df_editat
+            st.session_state["data"] = st.session_state["data"].dropna(subset=["Nom"]).reset_index(drop=True)
             st.session_state["data"].to_excel(FITXER_EXCEL, index=False)
             st.success("Canvis guardats a l’Excel ✅")
 
-# --- GRÀFIC DE CÀRREGA ---
-if not st.session_state["data"].empty:
-    df_group = st.session_state["data"].copy()
-    df_group["Data"] = pd.to_datetime(df_group["Data"])
-    df_group = df_group.groupby("Data").agg({"Càrrega": "sum"}).reset_index()
+# --- GRÀFIC DE CÀRREGA I ACWR ---
+if not df.empty:
+    df_group = df.groupby("Data").agg({"Càrrega": "sum"}).reset_index()
 
     chart = alt.Chart(df_group).mark_area(opacity=0.5).encode(
         x="Data:T",
