@@ -11,7 +11,8 @@ PCA
 StandardScaler
 openpyxl
 pi
-streamlit-gsheets==0.0.6
+streamlit_gsheets==0.0.6
 gspread
 oauth2client
+
 
