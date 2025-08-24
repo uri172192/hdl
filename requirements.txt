@@ -11,3 +11,4 @@ PCA
 StandardScaler
 openpyxl
 pi
+streamlit-gsheets
