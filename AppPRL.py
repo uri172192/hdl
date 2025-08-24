@@ -11,9 +11,12 @@ COLS = ["ID", "Data", "Nom", "Durada", "RPE", "Tipus", "Càrrega"]
 
 # ---------- Connexió a Google Sheets ----------
 conn = st.connection("gsheets", type=GSheetsConnection)
-df = conn.read(worksheet="Registres", ttl=5)  # "Registres" és el nom de la pestanya del teu Google Sheet
 
-if df.empty or any(c not in df.columns for c in COLS):
+# Llegim el full (pestanya "Registres")
+df = conn.read(worksheet="Registres", ttl=5)
+
+# Si el full està buit o li falten columnes, inicialitzem-lo
+if df is None or df.empty or any(c not in df.columns for c in COLS):
     df = pd.DataFrame(columns=COLS)
 
 # ---------- Funcions ----------
